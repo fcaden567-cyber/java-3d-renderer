@@ -4,10 +4,8 @@ package org.example;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(){
-        System.out.println(sqaure(4));
+
 
     }
-    static double sqaure(double x){
-        return Math.pow(x,2);
-    }
+    
 }
