@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
@@ -33,8 +33,40 @@ public class Main {
         frame.setVisible(true);
 
 
+        List tris = new ArrayList<>();
+        tris.add(new Triangle(new Vertex(100, 100, 100),
+                new Vertex(-100, -100, 100),
+                new Vertex(-100, 100, -100),
+                Color.WHITE));
+        tris.add(new Triangle(new Vertex(100, 100, 100),
+                new Vertex(-100, -100, 100),
+                new Vertex(100, -100, -100),
+                Color.RED));
+        tris.add(new Triangle(new Vertex(-100, 100, -100),
+                new Vertex(100, -100, -100),
+                new Vertex(100, 100, 100),
+                Color.GREEN));
+        tris.add(new Triangle(new Vertex(-100, 100, -100),
+                new Vertex(100, -100, -100),
+                new Vertex(-100, -100, 100),
+                Color.BLUE));
+
+        g2.translate(getWidth() / 2, getHeight() / 2);
+        g2.setColor(Color.WHITE);
+        for (Triangle t : tris) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(t.v1.x, t.v1.y);
+            path.lineTo(t.v2.x, t.v2.y);
+            path.lineTo(t.v3.x, t.v3.y);
+            path.closePath();
+            g2.draw(path);
+        }
+
     }
-    class Vertex {
+
+
+
+    static class Vertex {
         double x;
         double y;
         double z;
@@ -45,7 +77,7 @@ public class Main {
         }
     }
 
-    class Triangle {
+    static class Triangle {
         Vertex v1;
         Vertex v2;
         Vertex v3;
@@ -57,5 +89,5 @@ public class Main {
             this.color = color;
         }
     }
-
 }
+
